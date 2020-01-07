@@ -117,7 +117,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     }
 
     private void setConfiguration(final ReadableMap options) {
-        mediaType = options.hasKey("mediaType") ? options.getString("mediaType") : mediaType;
+        mediaType = options.hasKey("mediaType") ? options.getString("mediaType") : "any";
         multiple = options.hasKey("multiple") && options.getBoolean("multiple");
         includeBase64 = options.hasKey("includeBase64") && options.getBoolean("includeBase64");
         includeExif = options.hasKey("includeExif") && options.getBoolean("includeExif");
@@ -329,8 +329,8 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
                 galleryIntent.setType("video/*");
             } else {
                 galleryIntent.setType("*/*");
-                // String[] mimetypes = {"image/*", "video/*"};
-                // galleryIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
+                String[] mimetypes = {"image/*", mediaType};
+                galleryIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
             }
 
             galleryIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
