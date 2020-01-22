@@ -1,3 +1,5 @@
+This fork is taken from https://github.com/ivpusic/react-native-image-crop-picker
+
 # react-native-image-crop-picker
 iOS/Android image picker with support for camera, configurable compression, multiple images and cropping
 
